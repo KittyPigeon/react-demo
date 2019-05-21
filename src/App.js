@@ -19,10 +19,36 @@ function App() {
 }
  
 class Clock extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      data:{
+        msg:'hello err msg'
+      },
+      userInfo:['143']
+    }
+    this.handler=this.handler.bind(this);
+  }
+
+  handler(e){
+    this.setState({
+      data:{
+        msg:'新的消息'
+      }
+    })
+  }
+
+  handlerClick=(e)=>{
+    console.log(e);
+
+  }
   render() {
     return (
       <div>
         <h1>Hello, world!</h1>
+        <h2>{this.state.data.msg}</h2>
+        <button onClick={this.handler}>单击我</button>
+        <button onClick={this.handlerClick}>单击事件2</button>
       </div>
     );
   }
