@@ -9,7 +9,7 @@ function App() {
       <h1>首页</h1>
       <Clock></Clock>
       <Msg></Msg>
-      <Arr></Arr>
+      <Hero isHero={false}></Hero>
       <Welcome1 name="star"></Welcome1>
       <Welcome2 name="superStar"></Welcome2>
       <Comment author={{"avatarUrl":"http://test.xcbwl.cn/xcb_bid/friendHelp/headImage/mrtx_20190416162827.png","name":"王菲",}}></Comment>
@@ -46,6 +46,7 @@ class Clock extends React.Component {
     return (
       <div>
         <h1>Hello, world!</h1>
+        <div >测试</div>
         <h2>{this.state.data.msg}</h2>
         <button onClick={this.handler}>单击我</button>
         <button onClick={this.handlerClick}>单击事件2</button>
@@ -67,16 +68,6 @@ class Msg extends Component {
   }
 }
 
-class Arr extends Component{
-  render(){
-    var arrs=['Adc后裔','上单亚瑟'];
-    return (
-      <ul>
-        {arrs.map((item,index)=><li>{index}-{item}</li>)}
-      </ul>
-    );
-  }
-}
 //函数定义和类定义组件
 
 function Welcome1(props){
@@ -147,5 +138,29 @@ class Avatar2 extends Component{
   }
 }
 
+/* 条件渲染 */
+class Hero extends Component{
+  render(){
+    if(this.props.isHero){
+      return (
+        <h1>超级英雄</h1>
+      );
+    }else{
+      return (
+        <h1>反派英雄</h1>
+      );
+    }
+  }
+}
+
+class Hero2 extends Component {
+  render(){
+    let hero=`<div>魔幻英雄</div>`;
+    let opposite=``;
+    if(this.props.isHero){
+
+    }
+  }
+}
 
 export default App;
