@@ -10,6 +10,8 @@ function App() {
       <Clock></Clock>
       <Msg></Msg>
       <Hero isHero={false}></Hero>
+      <Hero2 isHero={false}></Hero2>
+      <Hero3 isHero={true}></Hero3>
       <Welcome1 name="star"></Welcome1>
       <Welcome2 name="superStar"></Welcome2>
       <Comment author={{"avatarUrl":"http://test.xcbwl.cn/xcb_bid/friendHelp/headImage/mrtx_20190416162827.png","name":"王菲",}}></Comment>
@@ -153,14 +155,60 @@ class Hero extends Component{
   }
 }
 
+class Template1 extends Component{
+  render(){
+    return (
+      <div>魔幻英雄</div>
+    );
+  }
+
+}
+class Template2 extends Component{
+  render(){
+    return (
+      <div>大魔王</div>
+    );
+  }
+
+}
 class Hero2 extends Component {
   render(){
-    let hero=`<div>魔幻英雄</div>`;
-    let opposite=``;
+    let hero=<Template1/>;
+    let villain=<Template2 />;
     if(this.props.isHero){
-
+      return (
+        hero
+      );
+    }else{
+      return(
+        villain
+      )
     }
   }
 }
 
+class Hero3 extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      isHero:false
+    }
+  }
+  render(){
+    let isHero=this.state.isHero;
+    return (
+      <div>{isHero?(<Template1 />):(<Template2 />)}</div>
+    );
+  }
+}
+
+/* 数组渲染 */
+
+class Arr2 extends Component {
+  render(){
+    return (
+      <div>1</div>
+    )
+  }
+}
 export default App;
