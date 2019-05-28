@@ -18,7 +18,7 @@ class RouterIndex extends Component{
                         <Link to="/About">About</Link>
                     </ul>
 
-                    <Route path="/" exact component={Home}></Route>
+                    <Route path="/" exact={true}  component={Home}></Route>
                     <Route path="/Product"  component={Product}></Route>
                     <Route path="/About"  component={About}></Route>
                 </div>

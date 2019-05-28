@@ -1,0 +1,46 @@
+$bg:rgba(247, 247, 247, 1);
+$color:rgba(255, 26, 41, 1);
+//设置背景图片大小
+@mixin bis($url){
+    background-image:url($url);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+//上下左右居中
+@mixin center{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+//上下居中
+@mixin centerY{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+//左右居中
+@mixin centerX{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+//弹性布局居中
+
+@mixin fCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
