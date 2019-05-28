@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import style from './style/common.css';
-
+import RouterIndex from './router/index';
 import './App.css';
 
 function App() {
@@ -16,10 +15,43 @@ function App() {
       <Welcome2 name="superStar"></Welcome2>
       <Comment author={{"avatarUrl":"http://test.xcbwl.cn/xcb_bid/friendHelp/headImage/mrtx_20190416162827.png","name":"王菲",}}></Comment>
       <Avatar2 user={{"avatarUrl":"http://test.xcbwl.cn/xcb_bid/friendHelp/headImage/mrtx_20190416162827.png","name":"王菲",}}></Avatar2>
+    
+{/*       <Router>
+        <nav className="nav">
+          <Link to="/">Home</Link>
+          <Link to="/Product">Product</Link>
+          <Link to="/About">About</Link>
+          <hr/>
+
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/Product" exact component={Product}></Route>
+          <Route path="/About" exact component={About}></Route>
+        </nav>
+      </Router> */}
+      <RouterIndex />
     </div>
   );
 }
- 
+
+
+const Home=()=>(
+  <div>
+    <h1>首页</h1>
+  </div>
+);
+const Product=()=>(
+  <div>
+    <h1>产品页</h1>
+  </div>
+);
+const About=()=>(
+  <div>
+    <h1>
+      About
+    </h1>
+  </div>
+);
+
 class Clock extends React.Component {
   constructor(props){
     super(props);
@@ -111,7 +143,7 @@ function Avatar(props) {
   return (
     <img className="Avatar"
       src={props.user.avatarUrl}
-      alt={props.user.name}
+      alt="图片"
     />
   );
 }
@@ -204,11 +236,4 @@ class Hero3 extends Component{
 
 /* 数组渲染 */
 
-class Arr2 extends Component {
-  render(){
-    return (
-      <div>1</div>
-    )
-  }
-}
 export default App;
