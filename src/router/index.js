@@ -12,7 +12,7 @@ class RouterIndex extends Component{
         <div>
             <Router>
                 <div>
-                    <ul>
+                    <ul className="nav">
                         <Link to="/">Home</Link>
                         <Link to="/Product">Product</Link>
                         <Link to="/About">About</Link>
