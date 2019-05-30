@@ -1,30 +1,47 @@
 import React,{Component} from 'react';
 import {Link,Route,BrowserRouter as Router} from 'react-router-dom';
-
-import Home from '../pages/Home/Home';
-import Product from '../pages/Product/Product';
-import About from '../pages/About/About';
-
+import routerList from './route';
+import Tabbar from '../component/tabbar/tabbar'
 class RouterIndex extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            active:0
+        }
+    }
     render(){
-
         return(
         <div>
             <Router>
+                <Tabbar></Tabbar>
                 <div>
-                    <ul className="nav">
-                        <Link to="/">Home</Link>
-                        <Link to="/Product">Product</Link>
-                        <Link to="/About">About</Link>
-                    </ul>
-
-                    <Route path="/" exact={true}  component={Home}></Route>
-                    <Route path="/Product"  component={Product}></Route>
-                    <Route path="/About"  component={About}></Route>
+                    {
+                        routerList.map((item,key)=>{
+                            return (
+                                <RouteWithSubRoutes key={key} {...item}/>
+                            );
+                        })
+                    }
                 </div>
             </Router>
         </div>
         );
     }
+
+}
+
+  function RouteWithSubRoutes(route) {
+    return (
+      
+      <Route
+        path={route.path}
+        exact ={route.exact}
+        render={props => (
+          // pass the sub-routes down to keep nesting
+          <route.component {...props} routes={route.routes} />
+        )}
+      />
+    );
+
 }
 export default RouterIndex;
