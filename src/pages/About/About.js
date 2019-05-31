@@ -10,7 +10,8 @@ class About extends Component {
     }
     render(){
         return (
-            <div className="red">About</div>
+            <div className="red">About <span className="icon iconfont iconaddress"></span></div>
+           
         );
     }
 }

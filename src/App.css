@@ -1,5 +1,4 @@
-@import './assest/fonts/iconfont.css';
-
+@import '/src/assest/fonts/iconfont.scss';
 .App {
   text-align: center;
 }

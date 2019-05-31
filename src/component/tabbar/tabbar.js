@@ -8,7 +8,7 @@ const tabbarArr =[
         img:'icon-home',
         text:'首页',
         path: "./home",
-        code:'&#xe606;'
+        code:'&#xe609;'
     },
     // {
     //     img:'icon-fenlei',
@@ -24,13 +24,14 @@ const tabbarArr =[
         img:'icon-yonghu',
         text:'产品页',
         path: "./product",
-        code:'&#xe60f;'
+        code:'&#xe609;',
+        className:'iconaddress'
     },
     {
         img:'icon-yonghu',
         text:'用户',
         path: "./about",
-        code:'&#xe60e;'
+        code:'&#xe609;'
     },
  
 ]
@@ -48,8 +49,8 @@ class TabBar extends Component {
                 <div className="tabbar-content">
                     {
                         tabbarArr.map((item,key)=>{
-                            return (<Link to={item.path} className={"tabbar-item"+(this.state.index==key?'active':'')} key={key} onClick={()=>this.itemChange(key)}>
-                                <div className="icon iconfont">{item.code}</div>
+                            return (<Link to={item.path} className={"tarbar-item "+(this.state.index==key?'active':'')} key={key} onClick={()=>this.itemChange(key)}>
+{/*                                 <span className="icon iconfont">{item.code}</span> */}
                                 <div>{item.text}</div>
                             </Link>)
                         })
