@@ -1,4 +1,12 @@
-@import '/src/assest/fonts/iconfont.scss';
+@import './assest/font/iconfont.css';
+:global(.iconfont){
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .App {
   text-align: center;
 }

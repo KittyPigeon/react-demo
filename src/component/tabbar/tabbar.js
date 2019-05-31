@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+/* import '../../assest/font/iconfont.css' */
 import './tabbar.scss';
 
 const tabbarArr =[
@@ -50,7 +51,7 @@ class TabBar extends Component {
                     {
                         tabbarArr.map((item,key)=>{
                             return (<Link to={item.path} className={"tarbar-item "+(this.state.index==key?'active':'')} key={key} onClick={()=>this.itemChange(key)}>
-{/*                                 <span className="icon iconfont">{item.code}</span> */}
+                                <span className="iconfont iconuser"></span>
                                 <div>{item.text}</div>
                             </Link>)
                         })
