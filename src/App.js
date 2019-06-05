@@ -2,11 +2,12 @@ import React,{Component} from 'react';
 import RouterIndex from './router/index';
 import './config/rem'
 import './App.css';
-
+import loginByMobile from './config/userService'
 function App() {
   return (
     <div className="App">
       <RouterIndex />
+      <Clock></Clock>
     </div>
   );
 }
@@ -52,7 +53,8 @@ class Clock extends React.Component {
 
   handlerClick=(e)=>{
     console.log(e);
-
+    let param={send_type:1, ver_type: 1, account:'18841126869'}
+    loginByMobile(param);
   }
   render() {
     return (
