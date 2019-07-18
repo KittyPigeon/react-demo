@@ -8,7 +8,7 @@ const tabbarArr =[
     {
         img:'icon-home',
         text:'首页',
-        path: "./home",
+        path: "/home",
         code:'&#xe609;'
     },
     // {
@@ -24,14 +24,14 @@ const tabbarArr =[
     {
         img:'icon-yonghu',
         text:'产品页',
-        path: "./product",
+        path: "/product",
         code:'&#xe609;',
         className:'iconaddress'
     },
     {
         img:'icon-yonghu',
         text:'用户',
-        path: "./about",
+        path: "/about",
         code:'&#xe609;'
     },
  

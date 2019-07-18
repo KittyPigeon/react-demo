@@ -1,13 +1,19 @@
 import React,{Component} from 'react';
+import axios from 'axios';
 import RouterIndex from './router/index';
+import {Link,Route,BrowserRouter as Router} from 'react-router-dom'; 
 import './config/rem'
 import './App.css';
-import loginByMobile from './config/userService'
+
+
+/* 封装axios到react */
+
+React.Component.prototype.$axios=axios;
 function App() {
+  
   return (
     <div className="App">
       <RouterIndex />
-      <Clock></Clock>
     </div>
   );
 }
@@ -44,17 +50,27 @@ class Clock extends React.Component {
   }
 
   handler(e){
+    console.log(this.props);
     this.setState({
       data:{
         msg:'新的消息'
       }
     })
   }
+  btnFn(){
 
+    console.log('单击');
+    this.props.history.push('/order');
+  }
   handlerClick=(e)=>{
     console.log(e);
     let param={send_type:1, ver_type: 1, account:'18841126869'}
-    loginByMobile(param);
+    this.$axios.get('https://elm.cangdu.org/v1/cities?type=guess').then(res=>{
+      console.log(res);
+    })
+  }
+  login(){
+    this.props.history.push('/login')
   }
   render() {
     return (

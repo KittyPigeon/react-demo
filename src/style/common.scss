@@ -1,3 +1,24 @@
 .err{
     background: red;    
 }
+.black{
+    background: #000;
+}
+.bold{
+    font-size:16px;
+    font-family:PingFangSC-Regular;
+    font-weight:600;
+    color:rgba(0,0,0,1);
+    line-height:22px;
+}
+.hx-btn{
+    width:12rem;
+    height:2rem;
+    background:rgba(0,0,0,1);
+    border-radius:2rem;
+    font-size:0.7rem;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:2rem;
+}

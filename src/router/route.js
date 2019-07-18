@@ -1,6 +1,8 @@
 import Home from "../pages/Home/Home"
 import Product from "../pages/Product/Product"
 import About from "../pages/About/About"
+import Order from '../pages/Order/Order'
+import Login from '../pages/Login/Login'
 /* import Col from "../pages/Col"
 import Cart from "../pages/Cart"
 import Buy from "../pages/Buy" */
@@ -25,6 +27,16 @@ const routes = [
       {
         path: "/about",
         component: About,
+        // exact : true
+      },
+      {
+        path: "/order",
+        component: Order,
+        // exact : true
+      },
+      {
+        path: "/login",
+        component: Login,
         // exact : true
       },
     // {
