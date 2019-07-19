@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import './About.scss';
-
+import '../../store/store';
+import store from '../../store/store';
+import headerTitle from '../../component/headTitle/headerTitle'
 class About extends Component {
     constructor(props){
         super(props);
@@ -10,7 +12,7 @@ class About extends Component {
     }
     render(){
         return (
-            <div className="red">About <span className="icon iconfont iconaddress"></span></div>
+            <div className="red">About{store.getState().routerReducer.route} <span className="icon iconfont iconaddress"></span></div>
            
         );
     }

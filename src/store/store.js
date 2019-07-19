@@ -17,15 +17,26 @@ const initialUserState = {
 const widgetReducer = function(state = {}, action) {
   return state;
 }
- 
+ // The router Reducer
+const routerReducer = function(state = { route:'route'}, action) {
+  switch(action.type){
+    case 'ROUTE-TAB':
+    return Object.assign({},state,{route:action.route});
+
+    case 'ROUTE-PAGE':
+      return Object.assign({},state,{route:action.route})
+  }
+  return state;
+}
 // 合并 Reducers
 const reducers = combineReducers({
   userState: userReducer,
-  widgetState: widgetReducer
+  widgetState: widgetReducer,
+  routerReducer:routerReducer
 });
  
 const store = createStore(reducers);
 store.subscribe(()=>{
-  store.getState();
+  console.log(store.getState());
 })
 export default store;

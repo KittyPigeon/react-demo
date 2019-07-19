@@ -11,7 +11,7 @@ class Product extends Component {
     }
     render(){
         return (
-            <div>Product<Tab1 history={this.props.history}></Tab1><List></List>{this.props.user}</div>
+            <div>Product{store.getState().routerReducer.route}<Tab1 history={this.props.history}></Tab1><List></List>{this.props.user}</div>
         );
     }
 }
@@ -35,6 +35,11 @@ class Tab1 extends Component {
         console.log(this.props);
         
         this.props.history.push('/order');
+        store.dispatch({
+          type:'ROUTE-PAGE',
+          route:'order'
+        })
+        console.log(this.props);
         // return <Link to="/order"></Link>
     }
        
@@ -42,6 +47,10 @@ class Tab1 extends Component {
         console.log(this.props);
         
         this.props.history.push('/login');
+        store.dispatch({
+          type:'ROUTE-PAGE',
+          route:'login'
+        })
         // return <Link to="/order"></Link>
     }
 
