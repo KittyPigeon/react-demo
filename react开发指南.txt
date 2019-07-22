@@ -1,0 +1,50 @@
+1.react creact-react-app 创建的项目没有config文件夹，如何手动添加？？
+cd my-react-app
+git init
+git add .
+git commit -m 'Saving before ejecting'
+npm run eject
+
+此处必须要git add. git commit是git tree clear 否则npm run eject会失败哦
+
+
+2.react路由的设置 
+
+npm install react-router-dom --save
+
+默认路由 Link 设置exact={true} 
+
+router文件夹添加index.js文件配置page
+
+3.如何JS实现路由跳转
+
+
+4.(this.props.todos || []).map(() => {})避免所传参数null或者undefined;
+
+5.引入sass完成
+
+6.react 引入iconfont 下载至本地文件类型选择symbol 感觉路径没有选择对 还有应该添加类 code码无法转义c
+
+7.react 如何实现js路由跳转 子组件props没有history 需要父组件传入 《Tab history={this.props.history}》</Tab>
+
+8.react px转rem
+
+https://www.jianshu.com/p/285d51730f5e
+
+9 react 引入rem方式  rem px 快速转化的方式 alt+z
+
+10 react 引入本地图片的方式
+
+11. react redux的研究  暂时在研究中
+store.subcribe(()=>{
+})
+
+store.getState();
+
+
+12. {this.state.addr}
+
+13.组件的生命周期
+
+14组件的引入  	
+
