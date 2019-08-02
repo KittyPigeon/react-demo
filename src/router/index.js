@@ -36,7 +36,6 @@ class RouterIndex extends Component{
         return(
         <div>
             <Router>
-                <Tabbar></Tabbar>
                 <div>
                     {
                         routerList.map((item,key)=>{
