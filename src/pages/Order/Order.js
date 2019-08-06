@@ -1,6 +1,28 @@
 import React,{Component} from 'react';
 import store from '../../store/store';
+import {connect} from 'react-redux'
+import {setPageTitle,setUserInfo,setToken} from '../../store/action.js'
 
+const mapStateToProps=(state)=>{
+    return {
+        pageTitle:state.pageTitle,
+        user:state.user,
+        token:state.token
+    }
+}
+const mapDispatchToProps=(dispatch,ownProps)=>{
+    return {
+        setPageTitle(data){
+            dispatch(setPageTitle(data))
+        },
+        setUserInfo(data){
+            dispatch(setUserInfo(data))
+        },
+        setToken(data){
+            dispatch(setToken(data))
+        }
+    }
+}
 class Order extends Component {
     constructor(props){
         super(props);
@@ -37,4 +59,5 @@ class Order extends Component {
         );
     }
 }
-export default Order;
+
+export default connect(mapDispatchToProps,mapStateToProps)(Order);

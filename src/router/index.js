@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import {Link,Route,BrowserRouter as Router} from 'react-router-dom';
-import routerList from './route';
-import Tabbar from '../component/tabbar/tabbar'
+import {Link,Route,BrowserRouter as Router,Switch,Redirect} from 'react-router-dom';
+import { connect } from 'react-redux'
+import routes from './route';
 class RouterIndex extends Component{
     constructor(props){
         super(props);
@@ -35,23 +35,31 @@ class RouterIndex extends Component{
     render(){
         return(
         <div>
-            <Router>
-                <div>
-                    {
-                        routerList.map((item,key)=>{
-                            return (
-                                <RouteWithSubRoutes key={key} {...item}/>
-                            );
-                        })
-                    }
-                </div>
-            </Router>
+          <Switch>
+           {routes.map((item, index) => {
+             return <Route key={index} path={item.path} exact render={props =>
+                 (!item.auth ? (<item.component {...props} />) : (token ? <item.component {...props} /> : <Redirect to={{
+                 pathname: '/login',
+                   state: { from: props.location }
+                }} />)
+                )} />
+             })}
+            <Route component={NotFound} />
+           </Switch>
         </div>
         );
     }
 
 }
 
+  class NotFound extends React.Component{
+      constructor(props){
+          super(props);
+          this.state={
+              
+          }
+      }
+  }  
   function RouteWithSubRoutes(route) {
     return (
       

@@ -1,5 +1,8 @@
 import http from './http';
-export default  function loginByMobile(param){
-    http.post('merge/manage/user/saveVerCode',param);
+function getLocation(){
+    return http.get('/v1/cities?type=guess');
 }
 
+export default{
+    getLocation
+}

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Link,Route,BrowserRouter as Router} from 'react-router-dom'; 
-import store from '../../store/store';
+import store from '../../store/store2';
 import List from '../../component/list/list'
 class Product extends Component {
     constructor(props){

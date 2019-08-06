@@ -12,6 +12,7 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "^0.3.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-react-app": "^9.0.0",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
@@ -54,6 +55,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.10.0",
     "semver": "6.0.0",
     "style-loader": "0.23.1",
@@ -86,6 +88,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "node-sass": "^4.12.0",
     "react-router": "^5.0.1",
     "sass-loader": "^7.1.0"

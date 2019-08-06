@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import Link from 'react-router-dom';
+import store from '../../store/store2'
+import Location from './location/location'
 
 class Home extends Component {
     constructor(props){
@@ -8,9 +10,13 @@ class Home extends Component {
             name:'Product'
         };
     }
+    componentDidMount () {
+        }
+
     render(){
         return (
-            <div>Home
+            <div>
+                <Location />
             </div>
         );
     }

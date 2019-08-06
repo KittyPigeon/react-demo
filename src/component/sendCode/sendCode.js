@@ -8,8 +8,11 @@ class SendCode extends React.Component{
             isCode:false,//是否发送验证码
             count:60
         }
+        this.clear=this.clear.bind(this)
     }
-
+    componentWillUnmount() {
+      this.clear()
+    }
     // 发送验证码
     sendCode=(e)=>{
         let count=this.state.count;

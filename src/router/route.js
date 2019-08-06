@@ -12,59 +12,33 @@ const routes = [
   {
     path: "/",
     component: Home,
-    exact : true
+    exact : true,
+    auth:true
   },
     {
       path: "/home",
       component: Home,
-      // exact : true
+      auth:true
     },
     {
         path: "/product",
         component: Product,
-        // exact : true
+        auth:true
       },
       {
         path: "/about",
         component: About,
-        // exact : true
+        auth:true
       },
       {
         path: "/order",
         component: Order,
-        // exact : true
       },
       {
         path: "/login",
         component: Login,
-        // exact : true
       },
-    // {
-    //     path: "/col",
-    //     component: Col
-    //   },
-    //   {
-    //     path: "/cart",
-    //     component: Cart
-    //   },
-    //   {
-    //     path: "/buy",
-    //     component: Buy
-    //   }, 
-    // {
-    //   path: "/login",
-    //   component: Login,
-    //   routes: [
-    //     {
-    //       path: "/tacos/bus",
-    //       component: Bus
-    //     },
-    //     {
-    //       path: "/tacos/cart",
-    //       component: Cart
-    //     }
-    //   ]
-    
+
  
   ];
  

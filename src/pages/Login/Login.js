@@ -1,11 +1,39 @@
 import React,{Component} from 'react';
 import {withRouter} from 'react-router-dom'
-
-import Logo from '../../component/log/log.js';
-import './Login.scss';
 import SendCode from '../../component/sendCode/sendCode';
+import './Login.scss';
 import '../../component/sendCode/sendCode.scss'
+import LoginMobile from '../../component/LoginMobile/LoginMobile'
 
+// connect方法的作用：将额外的props传递给组件，并返回新的组件，组件在该过程中不会受到影响
+
+import { connect } from 'react-redux'
+
+import {setPageTitle,setUserInfo,setToken} from '../../store/action.js'
+import store from '../../store/store2'
+
+
+const mapStateToProps=(state)=>{
+    console.log(state);
+    return {
+        pageTitle:state.pageTitle,
+        user:state.user,
+        token:state.token
+    }
+}
+const mapDispatchToProps=(dispatch,ownProps)=>{
+    return {
+        setPageTitle(data){
+            dispatch(setPageTitle(data))
+        },
+        setUserInfo(data){
+            dispatch(setUserInfo(data))
+        },
+        setToken(data){
+            dispatch(setToken(data))
+        }
+    }
+}
 
 class Login extends React.Component {
     constructor(props){
@@ -20,6 +48,16 @@ class Login extends React.Component {
             isLoginType:1,//登录类型 1手机密码 2：验证码 3:注册 4：忘记密码
         }
     }
+    componentDidMount () {
+        let { setPageTitle, setUserInfo ,setToken} = this.props
+         
+        // 触发setPageTitle action
+        setPageTitle('登录页面')
+         
+        // 触发setInfoList action
+        setToken('abc')
+        }
+       
 
     // 返回登录页
     goBack(){
@@ -39,6 +77,7 @@ class Login extends React.Component {
     // 跳转忘记密码
 
     goPwd(){
+        this.props.setPageTitle('fasdf')
         this.setState({
             isLoginType:4
         });
@@ -46,15 +85,17 @@ class Login extends React.Component {
 
     render(){
         var loginContent='';
+        const {pageTitle,token}=this.props;
+
         switch(this.state.isLoginType){
             case 1:
-                loginContent=(<LoginMobile goPwd={this.goPwd.bind(this)} goCode={this.goCode.bind(this)}/>);
+                loginContent=(<LoginMobile history={this.props.history} goPwd={this.goPwd.bind(this)} goCode={this.goCode.bind(this)}></LoginMobile>);
                 break;
             case 2:
-                    loginContent=(<LoginCode getBack={this.goBack.bind(this)} />);
+                    loginContent=(<LoginCode getBack={this.goBack.bind(this)} ></LoginCode>);
                 break;
             case 4:
-                    loginContent=(<ForgetPwd back={this.goBack.bind(this)} />)
+                    loginContent=(<ForgetPwd back={this.goBack.bind(this)} ></ForgetPwd>)
                     break;
         }
 
@@ -64,96 +105,7 @@ class Login extends React.Component {
         )    
     }
 }
-// 登录组件
 
-class LoginMobile extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            loginArr:[
-                {id:'mobile',placeholder:'请输入手机号',value:'',type:'text',icon:'iconfont icondelete'},
-                {id:'pwd',placeholder:'请输入密码',value:'',type:'password',icon:'iconfont iconvisible'}
-            ],
-            isLogin:false,
-
-            isLoginType:1,//登录类型 1手机密码 2：验证码 3:注册
-        }
-    }
-    goHome(){
-        this.props.history.push("/home")
-    }
-    inputChange(e){
-        let id=e.target.id;
-        let value=e.target.value;
-        let loginArr=this.state.loginArr;
-        loginArr.forEach(tmp=>{
-            if(tmp.id===id){
-                tmp.value=value;
-            }
-        });
-        // this.state.loginArr=[].concat(loginArr);
-        this.setState({
-            loginArr
-        })
-        let mobileItem=loginArr.find(tmp=>tmp.id=='mobile');
-        let pwdItem=loginArr.find(tmp=>tmp.id=='pwd');
-        if(mobileItem.value && pwdItem.value){
-            this.setState({
-                isLogin:true
-            })
-        }else{
-            this.setState({
-                isLogin:false
-            })
-        }
-    }
-    iconOperation(item){
-        let loginArr=this.state.loginArr;
-        loginArr.forEach(tmp=>{
-            if(item.id=='mobile' &&item.id==tmp.id){               
-                tmp.value='';
-            }else if(item.id=='pwd' &&item.id==tmp.id){
-                tmp.type='text';
-            }
-        });
-        this.setState({
-            loginArr
-        })
-    }
-    login(){
-
-    }
-    loginCode(){
-        this.props.goCode()
-    }
-    goPwd(e){
-        this.props.goPwd(e)
-    }
-
-    render(){
-        return (<div className="login">
-            <div className="code-login" onClick={this.loginCode.bind(this)}>验证码登录</div>
-            <div className="title">密码登录</div>
-            <div className="login-form">
-                {
-                    this.state.loginArr.map((item,index)=>{
-                        return (
-                            <div className="login-input-item" key={index}>
-                                <input onChange={this.inputChange.bind(this)} value={item.value}  type={item.type} placeholder={item.placeholder} id={item.id} />
-                                <div className={item.icon} onClick={this.iconOperation.bind(this,item)}></div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <div className={this.state.isLogin?'login-btn active':'login-btn'} onClick={this.goHome.bind(this)}>登录</div>
-            <div className="login-tip" onClick={this.goPwd.bind(this)}>忘记密码</div>
-            <div className="login-tip2">还没账号？快去注册</div>
-        </div>
-        )    
-    }
-
-}
 // 验证码组件
 class LoginCode extends React.Component{
     constructor(props){
@@ -170,7 +122,7 @@ class LoginCode extends React.Component{
     inputChange(e){
         let codeInfo=this.state.codeInfo;
         codeInfo.forEach(tmp=>{
-            if(tmp.id==e.target.id){
+            if(tmp.id===e.target.id){
                 tmp.value=e.target.value;
             }
         })
@@ -248,7 +200,7 @@ class LoginCode extends React.Component{
         )
     }
 }
-
+LoginCode=connect(mapDispatchToProps,mapStateToProps)(LoginCode);
 // 忘记密码组件
 class ForgetPwd extends React.Component{
     constructor(props){
@@ -264,7 +216,7 @@ class ForgetPwd extends React.Component{
     changeInfo(e){
         let pwdInfo=this.state.pwdInfo;
         pwdInfo.forEach(tmp=>{
-            if(tmp.id==e.target.id){
+            if(tmp.id===e.target.id){
                 tmp.value=e.target.value;
             }
         })
@@ -322,7 +274,7 @@ class InputItem extends React.Component{
     }
     render(){
         let sendCode='';
-        if(this.props.id=='code'){
+        if(this.props.id==='code'){
             sendCode=(<SendCode ref='code' send={this.Send.bind(this)}></SendCode>);
         }
         return (
@@ -334,4 +286,4 @@ class InputItem extends React.Component{
     }
 }
 
-export default Login;
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
