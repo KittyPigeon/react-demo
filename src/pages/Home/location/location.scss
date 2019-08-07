@@ -2,14 +2,37 @@
     .tip{
         display: flex;
         align-items: center;
-        div:first-child{
+        justify-content: space-between;
+        padding: 2.35rem 0.45rem 0;
+        line-height: 1.45rem;
+        border-bottom: 1px solid #e4e4e4;
+        .tip1{
             font-size: 0.55rem;
             color: #666;
         }
-        div:last-child{
+        .tip2{
             font-weight: 900;
             font-size: 0.475rem;
             color: #9f9f9f;
+        }
+    }
+    a{
+        text-decoration: none;
+    }
+    .location-city{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 1.8rem;
+        padding: 0 0.45rem;
+        border-bottom: 0.4rem solid #e4e4e4;
+        font: 0.75rem/1.8rem "Microsoft YaHei";
+        img{
+            width:0.6rem;
+            height: 0.6rem;
+        }
+        div{
+            color:#3190e8;
         }
     }
 }

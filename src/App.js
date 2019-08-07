@@ -10,7 +10,6 @@ import NotFound from './pages/common/NotFound/NotFound'
 // 引入请求接口
 import service from './config/userService';
 
-console.log(typeof service);
 /* 封装axios到react */
 React.Component.prototype.$service=service;
 React.Component.prototype.$axios=axios;

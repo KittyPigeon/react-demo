@@ -12,7 +12,12 @@ http.post=function(url,param){
     return new Promise((resolve,reject)=>{
         param=qs.stringify(param);
         axios.post(url,param).then((res=>{
-            resolve(res.data)
+            if(res.data){
+                resolve(res.data)
+            }else{
+                reject('错误信息')
+            }
+
         }))
     })
 }

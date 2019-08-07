@@ -3,6 +3,8 @@ import Product from "../pages/Product/Product"
 import About from "../pages/About/About"
 import Order from '../pages/Order/Order'
 import Login from '../pages/Login/Login'
+import City from '../pages/City/City'
+
 /* import Col from "../pages/Col"
 import Cart from "../pages/Cart"
 import Buy from "../pages/Buy" */
@@ -38,7 +40,10 @@ const routes = [
         path: "/login",
         component: Login,
       },
-
+      {
+        path: "/city/:id",
+        component: City,
+      },
  
   ];
  
