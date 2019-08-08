@@ -36,7 +36,7 @@ class Location extends React.Component{
                 </div>
                 <Link to={"/city/"+this.state.city.id}>
                     <div className="location-city">
-                        <div className="city">{this.state.city.name}</div>
+                        <div className="location-city-name">{this.state.city.name}</div>
                         <img className="arrow" src={arrowIcon}></img>
                     </div>
                 </Link>
