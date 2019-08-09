@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-06-04 21:07:13
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 14:29:35
+ */
 import axios from 'axios';
 import qs from 'qs';
 
@@ -10,8 +18,10 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 var http={};
 http.post=function(url,param){
     return new Promise((resolve,reject)=>{
-        param=qs.stringify(param);
-        axios.post(url,param).then((res=>{
+        //param=qs.stringify(param);
+        axios.post(url,{
+            params:param
+        }).then((res=>{
             if(res.data){
                 resolve(res.data)
             }else{
@@ -25,8 +35,10 @@ http.post=function(url,param){
 
 http.get=(url,param)=>{
     return new Promise((resolve,reject)=>{
-        param=qs.stringify(param);
-        axios.get(url,param).then(res=>{
+        //param=qs.stringify(param);
+        axios.get(url,{
+            params:param
+        }).then(res=>{
             resolve(res.data);
         })
     })

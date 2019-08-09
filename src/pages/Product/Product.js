@@ -1,7 +1,17 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-05-27 20:55:49
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 17:59:54
+ */
+
 import React,{Component} from 'react';
 import {Link,Route,BrowserRouter as Router} from 'react-router-dom'; 
 import store from '../../store/store2';
 import List from '../../component/list/list'
+import Button from '@material-ui/core/Button';
 class Product extends Component {
     constructor(props){
         super(props);
@@ -11,7 +21,9 @@ class Product extends Component {
     }
     render(){
         return (
-            <div>Product{store.getState().routerReducer.route}<Tab1 history={this.props.history}></Tab1><List></List>{this.props.user}</div>
+           <div>
+
+           </div>
         );
     }
 }

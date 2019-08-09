@@ -1,6 +1,7 @@
 .city{
     padding-top: 2.35rem;
     .search-wrapper{
+        position: relative;
         background-color: #fff;
         border-top: 1px solid #e4e4e4;
         border-bottom: 1px solid #e4e4e4;
@@ -18,6 +19,13 @@
             margin-bottom: 0.4rem;
             height: 1.4rem;
         }
+        .city-search-clear{
+            width:0.8rem;
+            height: 0.8rem;
+            position: absolute;
+            right:0.7rem;
+            top:0.8rem;
+        }
         .confirm{
             background-color: #3190e8;
             font-size: 0.65rem;
@@ -29,5 +37,12 @@
             margin:0 auto;
             line-height: 1.4rem;
         }
+    }
+    .city-history-clear{
+        font-size: 0.7rem;
+        color: #666;
+        text-align: center;
+        line-height: 2rem;
+        background-color: #fff;
     }
 }

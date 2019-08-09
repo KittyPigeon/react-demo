@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-08-08 10:18:01
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 16:15:11
+ */
 /**
  * @name: setStorage
  * @test: test font
@@ -100,7 +108,7 @@ var timeChunk = function (ary, fn, count) {
 export default {
     setStorage,
     getStorage,
-    getStorage,
+    removeStore,
     throttle,
     timeChunk
 }

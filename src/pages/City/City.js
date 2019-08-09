@@ -1,15 +1,36 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-08-07 11:18:33
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 17:21:18
+ */
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 //引入withRouter
 import {
     Link,
     withRouter
 } from 'react-router-dom'
+import {connect} from 'react-redux'
+
 import './City.scss'
 import Head from '../../component/head/head'
 import util from '../../util/util'
+import CityItem from './CityItem'
+import iconDelete from '../../assest/images/delete.png'
 
+const mapStateToProps=(state)=>{
+    console.log(state);
+    return {
+        pageTitle:state.pageTitle,
+        user:state.user,
+        token:state.token
+    }
+}
 
-export default class City extends Component {
+class City extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -21,13 +42,22 @@ export default class City extends Component {
             searchCity:'',
             isSearch:false,
             searchCityList:[],//搜索城市列表
-            historyCityList:[]//历史城市列表
+            historyCityList:[
+            ]//历史城市列表
         }
         this.getCityInfo=this.getCityInfo.bind(this);
+        this.renderCityContent=this.renderCityContent.bind(this);
     }
     componentDidMount(){
-        console.log(this);
         this.getCityInfo();
+        let historyCity=this.$util.getStorage('history-city');
+        console.log(historyCity)
+        if(historyCity){
+            historyCity=JSON.parse(historyCity);
+            this.setState({
+                historyCityList:historyCity
+            })
+        }
     }
     goBack(){
         this.props.history.goBack();
@@ -53,6 +83,13 @@ export default class City extends Component {
     search(e){
         this.setState({
             searchCity:e.target.value
+        })
+    }
+
+    // 清空input
+    clearInput(){
+        this.setState({
+            searchCity:''
         })
     }
 
@@ -86,6 +123,27 @@ export default class City extends Component {
             historyCityList
         })
     }
+
+    renderCityContent(){
+        var content='';
+        if(!this.state.isSearch){
+                content=this.state.historyCityList.map((item,index)=>{
+                return (<CityItem item={item} index={index} key={index} history={this.props.history}/>)
+            })
+        }else{
+            content=this.state.searchCityList.map((item,index)=>{
+                return <CityItem item={item} index={index}  key={index}  history={this.props.history} />
+            })
+        }
+        return content;
+    }
+
+    clearHistory(){
+        this.$util.removeStore('history-city');
+        this.setState({
+            historyCityList:[]
+        })
+    }
     render() {
         return (
             <div className="city">
@@ -94,11 +152,23 @@ export default class City extends Component {
                 {/* 搜索框 */}
                 <div className="search-wrapper">
                     <input type="text" placeholder="输入学校、商务楼、地址" value={this.state.searchCity} onChange={this.search.bind(this) }/>
+                    {this.state.searchCity?<img className='city-search-clear' src={iconDelete} onClick={this.clearInput.bind(this)} />:''}
                     <div className="confirm" onClick={this.confirm.bind(this)}>提交</div>
                 </div>
-                
+                {/* <div className="city-content" style={{display: (!this.state.isSearch) ? "block" : "none"}}>
+                   {this.state.historyCityList.map((item,index)=>{
+                       return (<CityItem item={item} index={index}></CityItem>)
+                   })}
+                </div> */}
+
+                <div className="city-content">
+                    {this.renderCityContent()}
+                </div>
+                {!this.state.isSearch&&this.state.historyCityList.length?(<div className="city-history-clear" onClick={this.clearHistory.bind(this)}>清空所有</div>):''}
             </div>
         )
     }
 }
 withRouter(City)
+
+export default connect(mapStateToProps)(City);

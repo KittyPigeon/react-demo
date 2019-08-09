@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-06-04 21:07:46
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 14:28:13
+ */
 import http from './http';
 function getLocation(){
     return http.get('/v1/cities?type=guess');

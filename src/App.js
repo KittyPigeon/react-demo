@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: sueRimn
+ * @Date: 2019-05-20 11:51:28
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2019-08-09 15:43:43
+ */
 import React,{Component} from 'react';
 import axios from 'axios';
 import {Link,Route,BrowserRouter as Router,Switch,Redirect} from 'react-router-dom';
@@ -9,8 +17,10 @@ import NotFound from './pages/common/NotFound/NotFound'
 
 // 引入请求接口
 import service from './config/userService';
+import util from './util/util';
 
 /* 封装axios到react */
+React.Component.prototype.$util=util;
 React.Component.prototype.$service=service;
 React.Component.prototype.$axios=axios;
 class App extends React.Component {
