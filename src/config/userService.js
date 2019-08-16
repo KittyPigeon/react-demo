@@ -36,10 +36,17 @@ function getSearchCity(param){
     return http.get('/v1/pois',param);
 }
 
+/**
+ * 获取搜索地址
+ */
+function getUserInfo(param){
+    return http.get('/v1/user',param);
+}
 export default{
     getLocation,
     getHotCity,
     getCityGroup,
     getCity,
-    getSearchCity
+    getSearchCity,
+    getUserInfo
 }

@@ -3,6 +3,8 @@ import store from '../../store/store';
 import {connect} from 'react-redux'
 import {setPageTitle,setUserInfo,setToken} from '../../store/action.js'
 
+import {Button, DatePicker } from 'antd';
+
 const mapStateToProps=(state)=>{
     return {
         pageTitle:state.pageTitle,
@@ -55,7 +57,7 @@ class Order extends Component {
 
     render(){
         return (
-            <div>Order{store.getState().routerReducer.route}</div>
+            <div>Order{store.getState().routerReducer.route}<Button type="primary">百度</Button></div>
         );
     }
 }

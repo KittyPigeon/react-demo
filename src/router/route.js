@@ -4,7 +4,8 @@ import About from "../pages/About/About"
 import Order from '../pages/Order/Order'
 import Login from '../pages/Login/Login'
 import City from '../pages/City/City'
-
+import Mine from '../pages/Mine/Mine'
+import Info from '../pages/Mine/Info/Info'
 /* import Col from "../pages/Col"
 import Cart from "../pages/Cart"
 import Buy from "../pages/Buy" */
@@ -44,7 +45,14 @@ const routes = [
         path: "/city/:id",
         component: City,
       },
- 
+      {
+        path:"/mine",
+        component:Mine
+      },
+      {
+        path:"/mine/info",
+        component:Info
+      },
   ];
  
  
