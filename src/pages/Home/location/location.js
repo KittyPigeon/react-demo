@@ -8,8 +8,8 @@ import HotCity from './HotCity'
 import CityGroup from './CityGroup'
 import userIcon from '../../../assest/images/user.png'
 class Location extends React.Component{
-    constructor(prpos){
-        super(prpos);
+    constructor(props){
+        super(props);
         this.state={
             city:'',
             children:[{slot:'head-elem-tip',title:'elme-a'},{slot:'head-icon-user'}]
@@ -17,6 +17,7 @@ class Location extends React.Component{
     }
     componentDidMount () {
         let that=this;
+        console.log(this);
         this.$service.getLocation().then(res=>{
             that.setState({
                 city:res
@@ -24,10 +25,13 @@ class Location extends React.Component{
         })
 
     }
+    goMine(){
+        this.props.history.push('/mine')
+    }
     render(){
         return(
             <div className="location">
-                <Head children={this.state.children}>
+                <Head children={this.state.children} goMine={this.goMine.bind(this)}>
                    
                 </Head>
                 <div className="tip">
@@ -46,6 +50,5 @@ class Location extends React.Component{
         )
     }
 }
-
 
 export default Location;

@@ -14,7 +14,6 @@ import store from '../../store/store2'
 
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return {
         pageTitle:state.pageTitle,
         user:state.user,
@@ -55,7 +54,6 @@ class Login extends React.Component {
         setPageTitle('登录页面')
          
         // 触发setInfoList action
-        setToken('abc')
         }
        
 

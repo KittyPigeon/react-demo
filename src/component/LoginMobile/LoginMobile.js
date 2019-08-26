@@ -5,7 +5,6 @@ import {setPageTitle,setUserInfo,setToken} from '../../store/action.js'
 import './LoginMobile.scss'
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return {
         pageTitle:state.pageTitle,
         user:state.user,
@@ -98,7 +97,7 @@ class LoginMobile extends React.Component {
         let mobileItem=loginArr.find(arr=>arr.id==='mobile');
         let pwd=loginArr.find(arr=>arr.id==='pwd');
         this.props.setPageTitle('登录页')
-        this.props.setUserInfo({name:'王菲'})
+        this.props.setUserInfo({name:mobileItem.value})
         this.props.setToken('12341');
         this.props.history.push('/home');
     }

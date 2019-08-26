@@ -37,10 +37,17 @@ function getSearchCity(param){
 }
 
 /**
- * 获取搜索地址
+ * 获取用户信息
  */
 function getUserInfo(param){
     return http.get('/v1/user',param);
+}
+
+/**
+ * 获取base64位图片
+ */
+function getBase64(){
+    return http.get('/v1/captchas');
 }
 export default{
     getLocation,
@@ -48,5 +55,6 @@ export default{
     getCityGroup,
     getCity,
     getSearchCity,
-    getUserInfo
+    getUserInfo,
+    getBase64
 }

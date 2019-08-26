@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import './About.scss';
-import '../../store/store';
-import store from '../../store/store';
+import store from '../../store/store2';
 import headerTitle from '../../component/headTitle/headerTitle'
 class About extends Component {
     constructor(props){

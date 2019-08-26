@@ -3,6 +3,7 @@ import Product from "../pages/Product/Product"
 import About from "../pages/About/About"
 import Order from '../pages/Order/Order'
 import Login from '../pages/Login/Login'
+import ELogin from '../pages/EleLogin/EleLogin'
 import City from '../pages/City/City'
 import Mine from '../pages/Mine/Mine'
 import Info from '../pages/Mine/Info/Info'
@@ -16,12 +17,11 @@ const routes = [
     path: "/",
     component: Home,
     exact : true,
-    auth:true
+    auth:false
   },
     {
       path: "/home",
       component: Home,
-      auth:true
     },
     {
         path: "/product",
@@ -39,7 +39,7 @@ const routes = [
       },
       {
         path: "/login",
-        component: Login,
+        component: ELogin,
       },
       {
         path: "/city/:id",
@@ -47,11 +47,13 @@ const routes = [
       },
       {
         path:"/mine",
-        component:Mine
+        component:Mine,
+        auth:false
       },
       {
         path:"/mine/info",
-        component:Info
+        component:Info,
+        auth:true
       },
   ];
  

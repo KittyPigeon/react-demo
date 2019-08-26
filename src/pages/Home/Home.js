@@ -11,12 +11,13 @@ class Home extends Component {
         };
     }
     componentDidMount () {
+        console.log(this);
         }
 
     render(){
         return (
             <div>
-                <Location />
+                <Location history={this.props.history}/>
             </div>
         );
     }

@@ -13,7 +13,6 @@ import defualtState from './state'
 function pageTitle (state=defualtState.pageTitle,action){
     switch(action.type){
         case 'SET_PAGE_TITLE':
-            console.log(action)
             return action.data;
         default:
             return state;

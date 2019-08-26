@@ -10,14 +10,16 @@ export default class Head extends Component {
 
     }
     componentDidMount(){
-        console.log(this)
+    }
+    goMine(){
+        this.props.goMine();
     }
     renderChild (child,index) { // 控制内容的分发
         switch(child.slot){
             case 'head-elem-tip':
                 return <div className="head-elem-tip" key={index}>{child.title}</div>
             case 'head-icon-user':
-                return <img className="head-icon-user" src={userIcon} key={index}></img>
+                return <img className="head-icon-user" src={userIcon} key={index} onClick={this.goMine.bind(this)}></img>
             case 'head-icon-back':
                 return <img className="head-icon-back" src={backIcon} key={index} onClick={this.goBack.bind(this)} />
             case 'head-title':
@@ -27,12 +29,13 @@ export default class Head extends Component {
         }
     }
     goBack(e){
-        this.props.goBack(e);
+        //this.props.goBack(e);
+        this.props.history.goBack();
     }
     render() {
         return (
-            <div>
-                <header id="head_top">
+            <div className="head">
+                <header id="head_top" className="head-top">
                     {this.props.children.map((child,index)=>{
                         return this.renderChild(child,index)
                     })}

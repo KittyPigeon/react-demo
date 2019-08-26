@@ -12,7 +12,7 @@ import IconStore from '../../assest/images/mine-store.png'
 import IconElme from '../../assest/images/mine-elem.png'
 import './Mine.scss'
 import {Button, DatePicker } from 'antd';
-
+import store from '../../store/store2';
 const selectedStyle = {
     backgroundColor: 'white',
     color: 'slategray',
@@ -39,12 +39,12 @@ export default class Mine extends Component {
                 {name:'饿了么会员卡',path:'/vipcard',icon:IconVip},
                 {name:'服务中心',path:'/service',icon:IconService},
                 {name:'下载饿了么',path:'/download',icon:IconElme},
-            ]
+            ],
+
         }
     }
 
     tap(){
-        console.log(11)
         this.setState({
             show:true
         })
@@ -92,18 +92,33 @@ export class MineHeader extends Component{
     constructor(props){
         super(props);
         this.state={
-
+            isLogin:true//是否登录判断
         }
     }
+    componentWillMount() {
+        let state=store.getState();
+        if(!state.token){
+            this.setState({
+                isLogin:false,
+                store:state
+            })
+        }
+    }
+
     goPage(e){
-        // this.props.history.push()
+        let isLogin=this.state.isLogin;
+        if(isLogin){
+            this.props.history.push('/mine/info');
+        }else{
+            this.props.history.push('/login');
+        }
     }
     render(){
         return (
             <div className="mine-header" onClick={this.goPage.bind(this)}>
                 <img src={mineUser} alt="" className="header-user-img"/>                
                 <div className="header-content">
-                    <div className="mobile">18841126869</div>
+                    {this.state.store.token?(<div className="mobile">{this.state.store.user.username}</div>):(<div className="mobile no-login">登录/注册</div>)}
                     <div className="tip-wrapper">
                         <img src={mineMobile} alt="" className="mobile-icon"/>
                         <div className="tip">暂无绑定手机号</div>

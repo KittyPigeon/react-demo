@@ -1,0 +1,19 @@
+.order{
+    animation: fadeIn 1s;
+    background: #fca;
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+        -webkit-transform: translate(1000px,0); 
+        transform: stranslate(1000px,0); 
+    }
+    to {
+        opacity:1;
+        -webkit-transform: translate(10px,0); 
+        transform: stranslate(10px,0); 
+    }
+}

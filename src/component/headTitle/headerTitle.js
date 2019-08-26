@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
-import store from '../../store/store';
+import store from '../../store/store2';
 import './headerTitle.scss';
 import backIcon from '../../resource/images/arrow.png';
 class headerTitle extends Component{

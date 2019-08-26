@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import store from '../../store/store';
+import store from '../../store/store2';
 import { connect } from 'react-redux';
 /* import '../../assest/font/iconfont.css' */
 import './tabbar.scss';

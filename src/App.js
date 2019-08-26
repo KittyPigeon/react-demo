@@ -54,7 +54,6 @@ class App extends React.Component {
 
 /* 数组渲染 */ // redux拿到token并挂载到App的props上面
  const mapStateToProps = (state, ownProps) => {
-   console.log(state);
    return { token: state.token }
  }
  export default connect(mapStateToProps)(App)
