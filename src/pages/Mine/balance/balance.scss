@@ -1,0 +1,62 @@
+.mine-balance{
+    padding-top:1.95rem;
+    .balance-pay-content{
+
+        background:#fff;
+        .balance-pay-tip{
+            font-size: 0.6rem;
+            color: #999;
+            line-height: 2rem;
+            padding-left: .5rem;
+        }
+        .balance-pay-list{
+            margin-top: .5rem;
+            font-size: 0.7rem;
+            color: #666;
+            text-align: center;
+        }
+    }
+    .balance-content{
+        padding: .3rem;
+        background-color: #3190e8;
+
+
+        .content{
+            padding: .4rem;
+            background-color: #fff;
+            border-radius: .15rem;
+            .balance-header{
+                display: flex;
+                justify-content: space-between;
+                font-size: .55rem;
+                div.rule{
+                    color: #3190e8;
+                }
+            }
+            .balance-account{
+                span:nth-of-type(1){
+                    font-size: 1.8rem;
+                    color: #333;
+                    font-family: Helvetica Neue,Tahoma,Arial;
+                }
+                span:nth-of-type(2){
+                    margin-left:0.2rem;
+                    font-size: 0.7rem;
+                    color: #333;
+                }
+            }
+            .balance-confirm{
+                width: 100%;
+                height: 2rem;
+                font-size: 0.8rem;
+                color: #fff;
+                border-radius: 0.15rem;
+                line-height: 2rem;
+                margin-top: 1rem;
+                text-align: center;
+                background-color: #ccc;
+            }
+        }
+
+    }
+}

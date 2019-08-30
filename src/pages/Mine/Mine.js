@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {Route, Link,NavLink } from "react-router-dom";
 import { CSSTransition,TransitionGroup} from 'react-transition-group';
 import Head from '../../component/head/head'
+import TabBar from '../../component/TabBar/TabBar'
+
+/* 引入图片 */
 import mineUser from '../../assest/images/mine-user.png'
 import mineMobile from '../../assest/images/contact.png'
 import arrow from '../../assest/images/arrow.png'
@@ -13,14 +17,33 @@ import IconElme from '../../assest/images/mine-elem.png'
 import './Mine.scss'
 import {Button, DatePicker } from 'antd';
 import store from '../../store/store2';
+import {setPageTitle,setUserInfo,setToken} from '../../store/action.js'
 const selectedStyle = {
     backgroundColor: 'white',
     color: 'slategray',
 
   }
-
-
-export default class Mine extends Component {
+  const mapStateToProps=(state)=>{
+    return {
+        pageTitle:state.pageTitle,
+        user:state.user,
+        token:state.token
+    }
+    }
+  const mapDispatchToProps=(dispatch,ownProps)=>{
+    return {
+        setPageTitle(data){
+            dispatch(setPageTitle(data))
+        },
+        setUserInfo(data){
+            dispatch(setUserInfo(data))
+        },
+        setToken(data){
+            dispatch(setToken(data))
+        }
+    }
+}
+ class Mine extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -28,11 +51,7 @@ export default class Mine extends Component {
             children:[
                 {slot:'head-title',title:'我的'},
             ],
-            user:{
-                balance:'0.22',
-                gift_amount:3,
-                point:300
-            },
+            user:{},
             mineTabList:[
                 {name:'我的订单',path:'/order',icon:IconOrder},
                 {name:'积分商城',path:'/gift',icon:IconStore},
@@ -43,17 +62,33 @@ export default class Mine extends Component {
 
         }
     }
-
+    componentWillMount(){
+        this.getUserInfo();
+    }
+    componentDidMount(){
+        
+    }
+    getUserInfo(){
+        let that=this;
+        this.$service.getUserInfo().then(res=>{
+            that.props.setUserInfo(res);
+            console.log(res);
+            that.setState({
+                user:res
+            })
+        })
+    }
     tap(){
         this.setState({
             show:true
         })
     }
+
     render() {
         return (
             <div className="mine">
                 <Head children={this.state.children}></Head>
-                <MineHeader history={this.props.history}></MineHeader>
+                <MineHeader history={this.props.history} user={this.state.user}></MineHeader>
                 {/* <CSSTransition
                       in={this.state.show} // 如果this.state.show从false变为true，则动画入场，反之out出场
                       timeout={5000} //动画执行1秒
@@ -75,20 +110,21 @@ export default class Mine extends Component {
                     <div className="box">hello</div>
                     
                 </CSSTransition> */}
-            <MineInfo user={this.state.user}></MineInfo>
-            <div className="mine-tab-list">
+                <MineInfo user={this.state.user}></MineInfo>
+                <div className="mine-tab-list">
                 {this.state.mineTabList.map((item,index)=>{
                     return (
                         <MineTabItem key={index} item={item}></MineTabItem>
                     )
                 })}
+                    <TabBar aIndex="3" history={this.props.history}></TabBar>
+                </div>
             </div>
-            </div>
+
         )
     }
 }
-
-export class MineHeader extends Component{
+ class MineHeader extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -96,30 +132,28 @@ export class MineHeader extends Component{
         }
     }
     componentWillMount() {
-        let state=store.getState();
-        if(!state.token){
+        console.log(store.getState());
+        if(!this.props.user.username){
+
+        }else{
             this.setState({
-                isLogin:false,
-                store:state
+                isLogin:false
             })
         }
     }
-
-    goPage(e){
-        let isLogin=this.state.isLogin;
-        if(isLogin){
-            this.props.history.push('/mine/info');
-        }else{
-            this.props.history.push('/login');
-        }
+    goInfo(){
+        this.props.history.push('/mine/info')
+    }
+    goLogin(){
+        this.props.history.push('/login')
     }
     render(){
         return (
-            <div className="mine-header" onClick={this.goPage.bind(this)}>
+            <div className="mine-header">
                 <img src={mineUser} alt="" className="header-user-img"/>                
                 <div className="header-content">
-                    {this.state.store.token?(<div className="mobile">{this.state.store.user.username}</div>):(<div className="mobile no-login">登录/注册</div>)}
-                    <div className="tip-wrapper">
+                    {this.props.user?(<div className="mobile" onClick={this.goInfo.bind(this)}>{this.props.user.username}</div>):(<div className="mobile no-login" onClick={this.goLogin.bind(this)}>登录/注册</div>)}
+                    <div className="head-tip">
                         <img src={mineMobile} alt="" className="mobile-icon"/>
                         <div className="tip">暂无绑定手机号</div>
                     </div>
@@ -129,7 +163,6 @@ export class MineHeader extends Component{
         )
     }
 }
-
 
 /* 我的页面信息 */
 export class MineInfo extends Component{
@@ -144,7 +177,7 @@ export class MineInfo extends Component{
             <div className="mine-info">
             
             <div className="mine-info-item">
-                <Link to="/">
+                <Link to="/mine/balance">
                     <div className="content"><span className="value balance">{this.props.user.balance}</span><span className="unit">元</span></div>
                     <div className="tip">我的余额</div>
                 </Link>
@@ -185,3 +218,4 @@ export class MineTabItem extends Component{
         )
     }
 }
+export default connect(mapStateToProps,mapDispatchToProps)(Mine);

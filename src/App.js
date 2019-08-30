@@ -6,10 +6,10 @@ import { connect } from 'react-redux'
 import routes from './router/route';
 import './config/rem'
 import './App.css';
-import AnimatedRouter from 'react-animated-router'; //导入我们的的AnimatedRouter组件
 import 'react-animated-router/animate.css'; //导入默认的切换动画样式，如果需要其它切换样式，可以导入自己的动画样式定义文件复制代码
 import NotFound from './pages/common/NotFound/NotFound'
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import 'antd/dist/antd.css';
+
 
 // 引入请求接口
 import service from './config/userService';
@@ -19,6 +19,8 @@ import './animate.css'
 React.Component.prototype.$util=util;
 React.Component.prototype.$service=service;
 React.Component.prototype.$axios=axios;
+
+
 class App extends React.Component {
      constructor(props) {
        super(props)
@@ -26,6 +28,7 @@ class App extends React.Component {
     }
    render() {
       let token = this.props.token
+      console.log(this);
        return (
 
             <Router>
@@ -42,7 +45,7 @@ class App extends React.Component {
                         })}
 
                         <Route component={NotFound} />
-                      </Switch>
+                </Switch>
                       
               </div>
             </Router>

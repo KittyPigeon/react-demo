@@ -1,0 +1,43 @@
+.user-name{
+    padding-top:2.55rem;
+    .user-name-input{
+        background: none;
+        width: 15.2rem;
+        margin:0 auto;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        padding: .2rem .1rem;
+        line-height: 1.2rem;
+        font-size: .7rem;
+        display: block;
+        &.error{
+            border-color: #ea3106;
+        }
+    }
+    .user-name-tip{
+        width: 96%;
+        margin:0 auto;
+        font-size: 0.4rem;
+        color: #666;
+        padding: .4rem 0 1rem;
+        &.error{
+            font-size: 0.58rem;
+            color: #ea3106;
+            padding-top: .1rem;
+        }
+    }
+    .user-name-confirm{
+        display: block;
+        width: 96%;
+        margin:0 auto;
+        background: #3199e8;
+        line-height: 2rem;
+        font-size: 0.7rem;
+        color: #fff;
+        text-align: center;
+        opacity: 0.6;
+        &.enabled{
+            opacity: 1;
+        }
+    }
+}

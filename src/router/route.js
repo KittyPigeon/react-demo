@@ -1,4 +1,5 @@
 import Home from "../pages/Home/Home"
+import Msite from "../pages/msite/msite"
 import Product from "../pages/Product/Product"
 import About from "../pages/About/About"
 import Order from '../pages/Order/Order'
@@ -7,11 +8,10 @@ import ELogin from '../pages/EleLogin/EleLogin'
 import City from '../pages/City/City'
 import Mine from '../pages/Mine/Mine'
 import Info from '../pages/Mine/Info/Info'
-/* import Col from "../pages/Col"
-import Cart from "../pages/Cart"
-import Buy from "../pages/Buy" */
- 
- 
+import ElePwd from '../pages/ElePwd/ElePwd'
+import UserName from '../pages/Mine/UserName/UserName'
+import Balance from '../pages/Mine/balance/balance'
+import BalanceDetail from '../pages/Mine/balance/balanceDetail/balanceDetail' 
 const routes = [
   {
     path: "/",
@@ -42,6 +42,10 @@ const routes = [
         component: ELogin,
       },
       {
+        path:"/login/reset-pwd",
+        component:ElePwd
+      },
+      {
         path: "/city/:id",
         component: City,
       },
@@ -52,8 +56,23 @@ const routes = [
       },
       {
         path:"/mine/info",
-        component:Info,
-        auth:true
+        component:Info
+      },
+      {
+        path:"/mine/balance",
+        component:Balance
+      },
+      {
+        path:"/mine/info/username",
+        component:UserName
+      },
+      {
+        path:"/mine/balance/balanceDetail",
+        component:BalanceDetail
+      },
+      {
+        path:"/msite",
+        component:Msite
       },
   ];
  

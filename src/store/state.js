@@ -1,8 +1,8 @@
 
 const state={
-    user:{},
+    user:null,
     pageTitle:'默认标题',
-    token:'',
+    token:'123',
     location:{}
 }
 

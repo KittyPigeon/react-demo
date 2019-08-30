@@ -147,7 +147,7 @@ class City extends Component {
     render() {
         return (
             <div className="city">
-                <Head  children={this.state.children} goBack={this.goBack.bind(this)}>
+                <Head  children={this.state.children} history={this.props.history} goBack={this.goBack.bind(this)}>
                 </Head>
                 {/* 搜索框 */}
                 <div className="search-wrapper">

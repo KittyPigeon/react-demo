@@ -1,0 +1,46 @@
+.info{
+    height: 100%;
+    padding-top: 2.55rem;
+    background: #f2f2f2;
+    .info-list{
+        background: #fff;
+        .info-list-item{
+            display: flex;
+            align-items: center;
+            padding: .3rem .4rem;
+            border-top: 1px solid #ddd;
+            .info-item-name{
+                font-size: 0.5rem;
+                color: #666;
+            }
+            .info-item-value{
+                flex:1;
+                line-height: 1.39rem;
+                font-size: 0.7rem;
+                color: #999;
+                margin-right: .2rem;
+                font-weight: 100;
+                font-family: Arial;
+                text-align: right;
+                img{
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                }
+            }
+            .icon{
+                width: 0.66667rem;
+            }
+        }
+    }
+    .login-out{
+        width: 96%;
+        margin: 1.3rem auto 0;
+        line-height: 1.5rem;
+        border-radius: 5px;
+        text-align: center;
+        background: #d8584a;
+        font-size: 0.6rem;
+        color: #fff;
+    }
+}

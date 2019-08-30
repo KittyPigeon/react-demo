@@ -31,7 +31,7 @@ class Location extends React.Component{
     render(){
         return(
             <div className="location">
-                <Head children={this.state.children} goMine={this.goMine.bind(this)}>
+                <Head children={this.state.children} history={this.props.history} goMine={this.goMine.bind(this)}>
                    
                 </Head>
                 <div className="tip">

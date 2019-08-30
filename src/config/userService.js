@@ -40,15 +40,26 @@ function getSearchCity(param){
  * 获取用户信息
  */
 function getUserInfo(param){
-    return http.get('/v1/user',param);
+    return http.get('/v1/user',{user_id:38330});
 }
 
 /**
  * 获取base64位图片
  */
 function getBase64(){
-    return http.get('/v1/captchas');
+    return http.post('/v1/captchas');
 }
+
+/* 登录 */
+function login(param){
+    return http.post('/v2/login',param);
+}
+
+/* 登录 */
+function changepassword(param){
+    return http.post('/v2/changepassword',param);
+}
+
 export default{
     getLocation,
     getHotCity,
@@ -56,5 +67,7 @@ export default{
     getCity,
     getSearchCity,
     getUserInfo,
-    getBase64
+    getBase64,
+    login,
+    changepassword
 }
